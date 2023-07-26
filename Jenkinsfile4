@@ -19,7 +19,7 @@ pipeline {
         }
     stage('Package') {
         when {
-            AllOf {
+            allOf {
             environment name: "IN_PROD", value: 'true'
             branch 'production'
             }
