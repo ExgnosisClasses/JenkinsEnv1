@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    environment {
+        IN_PROD = 'false'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo "Build"
+                echo "Value of IN_PROD is ${IN_PROD}"
+            }
+        }
+    stage('Test') {
+        environment {
+            IN_PROD = 'true'
+            
+        }
+            steps {
+                echo 'Test'
+                 echo "Value of IN_PROD is ${IN_PROD}"
+            }
+        }
+    stage('Package') {
+            steps {
+                echo 'Package'
+                 echo "Value of IN_PROD is ${IN_PROD}"
+            }
+        }
+    stage('Deploy') {
+            steps {
+                echo 'Deploy'
+            }
+        }
+    stage('Report') {
+            steps {
+                echo 'Report'
+            }
+        }
+    }
+    
+}
